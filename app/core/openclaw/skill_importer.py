@@ -129,11 +129,23 @@ class OpenClawSkillImporter:
             return None
 
         errors: list[str] = []
-        frontmatter, body = (
-            self._extract_frontmatter(
-                content, errors,
+        try:
+            frontmatter, body = (
+                self._extract_frontmatter(
+                    content, errors,
+                )
             )
-        )
+        except Exception as e:
+            self._total_failed += 1
+            logger.warning(
+                "Frontmatter hatasi: %s: %s",
+                file_path, e,
+            )
+            frontmatter = OpenClawFrontmatter()
+            body = content
+            errors.append(
+                f"Frontmatter hatasi: {e}",
+            )
 
         raw = OpenClawSkillRaw(
             file_path=file_path,
@@ -299,15 +311,15 @@ class OpenClawSkillImporter:
             Frontmatter nesnesi.
         """
         metadata = data.get("metadata", {})
-        if isinstance(metadata, str):
+        if not isinstance(metadata, dict):
             metadata = {}
 
         openclaw = metadata.get("openclaw", {})
-        if isinstance(openclaw, str):
+        if not isinstance(openclaw, dict):
             openclaw = {}
 
         requires = openclaw.get("requires", {})
-        if isinstance(requires, str):
+        if not isinstance(requires, dict):
             requires = {}
 
         tags_raw = data.get("tags", [])

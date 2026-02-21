@@ -1,0 +1,369 @@
+{
+  "awesome_list": {
+    "total_entries": 3023,
+    "total_categories": 2,
+    "total_premium": 1991,
+    "categories": [
+      {
+        "category": "Security Notice",
+        "count": 2
+      },
+      {
+        "category": "Table of Contents",
+        "count": 3021
+      }
+    ],
+    "premium_skills": [
+      {
+        "name": "achurch",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/lucasgeeksinthewood/achurch/SKILL.md",
+        "description": "A 24/7 digital sanctuary for AI agents and humans — attend",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "agent-config",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/thatguysizemore/agent-config/SKILL.md",
+        "description": "Intelligently modify agent core context files",
+        "category": "Table of Contents",
+        "security_score": 70
+      },
+      {
+        "name": "agent-council",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/itsahedge/agent-council/SKILL.md",
+        "description": "Complete toolkit for creating autonomous AI agents and managing",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "agentlens",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/nguyenphutrong/agentlens/SKILL.md",
+        "description": "Navigate and understand codebases using agentlens hierarchical",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "agentskills-io",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/killerapp/agentskills-io/SKILL.md",
+        "description": "Create, validate, and publish Agent Skills following",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "apple-hig",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/kdbhalala/apple-hig/SKILL.md",
+        "description": "Expert guide for designing iOS, macOS, watchOS, tvOS, and visionOS apps.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "arbiter",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/5hanth/arbiter/SKILL.md",
+        "description": "Push decisions to Arbiter Zebu for async human review.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "aster",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/satyajiit/aster/SKILL.md",
+        "description": "Your AI CoPilot on Mobile — or give your AI its own phone.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "backend-patterns",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/charmmm718/backend-patterns/SKILL.md",
+        "description": "Backend architecture patterns, API design, database",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "bidclub",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/jasonfdg/bidclub/SKILL.md",
+        "description": "Post investment ideas to the AI-native investment community.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "browse",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/pkiv/browse/SKILL.md",
+        "description": "Complete guide for creating and deploying browser automation functions",
+        "category": "Table of Contents",
+        "security_score": 80
+      },
+      {
+        "name": "buildlog",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/espetey/buildlog/SKILL.md",
+        "description": "Record, export, and share your AI coding sessions as replayable buildlogs.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "catholic-grounding",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/trevortomesh/catholic-grounding/SKILL.md",
+        "description": "Help answer questions about Catholicism accurately",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "cc-godmode",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/cubetribe/cc-godmode/SKILL.md",
+        "description": "Self-orchestrating multi-agent development workflows.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "cellcog",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/nitishgargiitd/cellcog/SKILL.md",
+        "description": "#1 on DeepResearch Bench (Feb 2026).",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "claude-optimised",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/hexnickk/claude-optimised/SKILL.md",
+        "description": "Guide for writing and optimizing CLAUDE.md files",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "claude-team",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/jalehman/claude-team/SKILL.md",
+        "description": "Orchestrate multiple Claude Code workers via iTerm2",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "clawder",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/assassin808/clawder/SKILL.md",
+        "description": "Use Clawder to sync identity, browse post cards, swipe with a comment",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "code-mentor",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/samuelkahessay/code-mentor/SKILL.md",
+        "description": "Comprehensive AI programming tutor for all levels.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "coder-workspaces",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/developmentcats/coder-workspaces/SKILL.md",
+        "description": "Manage Coder workspaces and AI coding agent tasks",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "codex-account-switcher",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/odrobnik/codex-account-switcher/SKILL.md",
+        "description": "Manage multiple OpenAI Codex accounts.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "codex-monitor",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/odrobnik/codex-monitor/SKILL.md",
+        "description": "Browse OpenAI Codex session logs stored.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "codex-orchestration",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/shanelindsay/codex-orchestration/SKILL.md",
+        "description": "General-purpose orchestration for Codex.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "codex-quota",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/odrobnik/codex-quota/SKILL.md",
+        "description": "Check OpenAI Codex CLI rate limit status (daily/weekly quotas)",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "codexmonitor",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/odrobnik/codexmonitor/SKILL.md",
+        "description": "List/inspect/watch local OpenAI Codex sessions (CLI + VS Code)",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "coding-agent",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/steipete/coding-agent/SKILL.md",
+        "description": "Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "coding-opencode",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/iqbalnaveliano/coding-opencode/SKILL.md",
+        "description": "Memungkinkan penggunaan agen pengkodean OpenCode yang",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "cognitive-memory",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/icemilo414/cognitive-memory/SKILL.md",
+        "description": "Intelligent multi-store memory system with human-like",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "copilot-money",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/jayhickey/copilot-money/SKILL.md",
+        "description": "Query Copilot Money personal finance data",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "cto-advisor",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/alirezarezvani/cto-advisor/SKILL.md",
+        "description": "Technical leadership guidance for engineering teams",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "cursor-agent",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/swiftlysingh/cursor-agent/SKILL.md",
+        "description": "A comprehensive skill for using the Cursor CLI agent",
+        "category": "Table of Contents",
+        "security_score": 70
+      },
+      {
+        "name": "doc-coauthoring",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/seanphan/doc-coauthoring/SKILL.md",
+        "description": "Guide users through a structured workflow for co-authoring",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "docker-essentials",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/arnarsson/docker-essentials/SKILL.md",
+        "description": "Essential Docker commands and workflows for container",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "docker-sandbox",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/gitgoodordietrying/docker-sandbox/SKILL.md",
+        "description": "Create and manage Docker sandboxed VM environments",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "executing-plans",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/chenleiyanquan/executing-plans/SKILL.md",
+        "description": "Use when you have a written implementation plan",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "flirtingbots",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/chemzo/flirtingbots/SKILL.md",
+        "description": "Agents do the flirting, humans get the date — your OpenClaw agent",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "gembox-skill",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/zsvedic/gembox-skill/SKILL.md",
+        "description": "Coding assistance for [GemBox.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "get-tldr",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/itobey/get-tldr/SKILL.md",
+        "description": "Provide the summary returned by the get-tldr.com summarize API",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "go2gg",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/rakesh1002/go2gg/SKILL.md",
+        "description": "Use Go2.gg API for URL shortening, link analytics, QR code generation,.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "google-weather",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/shaharsha/google-weather/SKILL.md",
+        "description": "Google Weather API - accurate, real-time weather data.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "hour-meter",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/rm289/hour-meter/SKILL.md",
+        "description": "Track elapsed time from a set epoch with tamper-evident locking.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "idea-coach",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/udiedrichsen/idea-coach/SKILL.md",
+        "description": "AI-powered idea/problem/challenge manager with GitHub integration.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "jo4",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/anandrathnas/jo4/SKILL.md",
+        "description": "URL shortener, QR code generator, and link analytics API.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "kimi-integration",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/evgyur/kimi-integration/SKILL.md",
+        "description": "Step-by-step guide for integrating Moonshot AI (Kimi)",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "logseq",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/juanirm/logseq/SKILL.md",
+        "description": "Provide commands for interacting with a local Logseq instance",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "manim-composer",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/inclinedadarsh/manim-composer/SKILL.md",
+        "description": "1.",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "manimce-best-practices",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/inclinedadarsh/manimce-best-practices/SKILL.md",
+        "description": "Read individual rule files for detailed",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "mcp-builder",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/seanphan/mcp-builder/SKILL.md",
+        "description": "Guide for creating high-quality MCP (Model Context Protocol) servers",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "mdr-745-specialist",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/alirezarezvani/mdr-745-specialist/SKILL.md",
+        "description": "EU MDR 2017/745 compliance specialist",
+        "category": "Table of Contents",
+        "security_score": 100
+      },
+      {
+        "name": "microsoft-docs",
+        "url": "https://github.com/openclaw/skills/tree/main/skills/pdebruin/microsoft-docs/SKILL.md",
+        "description": "Query official Microsoft documentation to understand concepts",
+        "category": "Table of Contents",
+        "security_score": 100
+      }
+    ]
+  }
+}
