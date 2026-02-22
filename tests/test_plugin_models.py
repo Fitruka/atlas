@@ -121,8 +121,8 @@ class TestHookEvent:
         assert HookEvent.APPROVAL_RESPONDED == "approval_responded"
 
     def test_total_count(self) -> None:
-        """16 hook olayi olmali."""
-        assert len(HookEvent) == 16
+        """21 hook olayi olmali."""
+        assert len(HookEvent) == 21
 
 
 # === PluginConfigField Testleri ===

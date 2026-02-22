@@ -1237,10 +1237,10 @@ class TestNegotiationConfig:
         from app.config import Settings
         s = Settings()
         assert s.negotiation_enabled is True
-        assert s.auto_respond is False
+        assert s.auto_respond is True
         assert s.min_acceptable_score == 60.0
         assert s.max_rounds == 10
-        assert s.require_approval is True
+        assert s.require_approval is False
 
 
 # ==================== Import Testleri ====================

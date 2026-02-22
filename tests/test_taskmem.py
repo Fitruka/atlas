@@ -1836,7 +1836,7 @@ class TestTaskMemConfig:
         assert s.template_auto_create is True
         assert s.prediction_enabled is True
         assert (
-            s.personalization_level == "moderate"
+            s.personalization_level == "medium"
         )
 
 

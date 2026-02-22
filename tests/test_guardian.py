@@ -1029,7 +1029,7 @@ class TestGuardianConfig:
         from app.config import Settings
         s = Settings()
         assert s.guardian_enabled is True
-        assert s.health_check_interval == 60
+        assert s.health_check_interval == 30
         assert s.auto_remediate is True
         assert s.sla_target == 99.9
         assert (

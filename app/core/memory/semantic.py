@@ -543,6 +543,267 @@ class SemanticMemory:
         info = await client.get_collection(full_name)
         return info.points_count or 0
 
+    # === Per-Agent Scoped Collections ===
+
+    def agent_collection_name(
+        self,
+        agent_id: str,
+        collection: str,
+    ) -> str:
+        """Agent-scoped koleksiyon adi olusturur.
+
+        Args:
+            agent_id: Agent ID.
+            collection: Koleksiyon kisa adi.
+
+        Returns:
+            Agent-scoped koleksiyon adi.
+        """
+        safe_id = agent_id.replace("-", "_")[:32]
+        return f"{self.prefix}_agent_{safe_id}_{collection}"
+
+    async def ensure_agent_collection(
+        self,
+        agent_id: str,
+        collection: str = "memory",
+    ) -> bool:
+        """Agent-scoped koleksiyon olusturur.
+
+        Args:
+            agent_id: Agent ID.
+            collection: Koleksiyon kisa adi.
+
+        Returns:
+            True: Olusturuldu, False: Mevcut.
+        """
+        client = self._ensure_connected()
+        full_name = self.agent_collection_name(
+            agent_id, collection,
+        )
+
+        exists = await client.collection_exists(full_name)
+        if exists:
+            return False
+
+        await client.create_collection(
+            collection_name=full_name,
+            vectors_config=VectorParams(
+                size=self._embedding_dimension,
+                distance=Distance.COSINE,
+            ),
+        )
+        logger.info(
+            "Agent koleksiyonu olusturuldu: %s",
+            full_name,
+        )
+        return True
+
+    async def store_agent_memory(
+        self,
+        agent_id: str,
+        text: str,
+        metadata: dict[str, Any] | None = None,
+        collection: str = "memory",
+    ) -> str:
+        """Agent-scoped hafizaya kayit ekler.
+
+        Args:
+            agent_id: Agent ID.
+            text: Kaydedilecek metin.
+            metadata: Ek metadata.
+            collection: Koleksiyon kisa adi.
+
+        Returns:
+            Nokta ID.
+        """
+        await self.ensure_agent_collection(
+            agent_id, collection,
+        )
+
+        client = self._ensure_connected()
+        full_name = self.agent_collection_name(
+            agent_id, collection,
+        )
+
+        embedding = await self._generate_embedding(text)
+        pid = str(uuid.uuid4())
+
+        payload: dict[str, Any] = {
+            "text": text,
+            "agent_id": agent_id,
+            "source": "agent",
+            "created_at": datetime.now(
+                timezone.utc,
+            ).isoformat(),
+        }
+        if metadata:
+            payload["metadata"] = metadata
+
+        await client.upsert(
+            collection_name=full_name,
+            points=[
+                PointStruct(
+                    id=pid,
+                    vector=embedding,
+                    payload=payload,
+                ),
+            ],
+        )
+        return pid
+
+    async def search_agent_memory(
+        self,
+        agent_id: str,
+        query: str,
+        limit: int = 5,
+        score_threshold: float = 0.0,
+        collection: str = "memory",
+    ) -> list[SemanticSearchResult]:
+        """Agent-scoped hafizada arar.
+
+        Args:
+            agent_id: Agent ID.
+            query: Arama sorgusu.
+            limit: Maks sonuc.
+            score_threshold: Min skor.
+            collection: Koleksiyon.
+
+        Returns:
+            Sonuc listesi.
+        """
+        client = self._ensure_connected()
+        full_name = self.agent_collection_name(
+            agent_id, collection,
+        )
+
+        try:
+            exists = await client.collection_exists(
+                full_name,
+            )
+            if not exists:
+                return []
+        except Exception:
+            return []
+
+        query_embedding = await self._generate_embedding(
+            query,
+        )
+        results = await client.search(
+            collection_name=full_name,
+            query_vector=query_embedding,
+            limit=limit,
+            score_threshold=score_threshold,
+        )
+
+        return [
+            SemanticSearchResult(
+                id=str(hit.id),
+                text=(hit.payload or {}).get("text", ""),
+                score=hit.score,
+                metadata=(hit.payload or {}).get(
+                    "metadata", {},
+                ),
+                source=(hit.payload or {}).get(
+                    "source", "",
+                ),
+            )
+            for hit in results
+        ]
+
+    # === FTS Fallback ===
+
+    def fts_search(
+        self,
+        texts: list[str],
+        query: str,
+        limit: int = 5,
+    ) -> list[dict[str, Any]]:
+        """Full-text arama (embedding olmadan fallback).
+
+        Qdrant erisilemedigi zaman basit
+        metin eslestirme ile arama yapar.
+
+        Args:
+            texts: Aranacak metin listesi.
+            query: Arama sorgusu.
+            limit: Maks sonuc.
+
+        Returns:
+            Eslesen sonuclar.
+        """
+        query_lower = query.lower()
+        query_terms = query_lower.split()
+        results: list[dict[str, Any]] = []
+
+        for i, text in enumerate(texts):
+            text_lower = text.lower()
+            score = 0.0
+            for term in query_terms:
+                if term in text_lower:
+                    score += 1.0 / len(query_terms)
+
+            if score > 0:
+                results.append({
+                    "index": i,
+                    "text": text,
+                    "score": score,
+                })
+
+        results.sort(
+            key=lambda x: x["score"],
+            reverse=True,
+        )
+        return results[:limit]
+
+    def expand_query(
+        self,
+        query: str,
+    ) -> list[str]:
+        """Sorgu genisletme (FTS icin).
+
+        Args:
+            query: Orijinal sorgu.
+
+        Returns:
+            Genisletilmis sorgu listesi.
+        """
+        expansions = [query]
+        terms = query.split()
+
+        if len(terms) > 1:
+            for term in terms:
+                if len(term) > 2:
+                    expansions.append(term)
+
+        return expansions
+
+    # === Embedding Provider ===
+
+    @property
+    def embedding_provider(self) -> str:
+        """Aktif embedding saglayicisi."""
+        return self._embedding_model
+
+    def set_embedding_model(
+        self,
+        model_name: str,
+        dimension: int = 0,
+    ) -> None:
+        """Embedding modelini degistirir.
+
+        Args:
+            model_name: Yeni model adi.
+            dimension: Vektor boyutu (0 ise mevcut).
+        """
+        self._embedding_model = model_name
+        if dimension > 0:
+            self._embedding_dimension = dimension
+        self._embedder = None
+        logger.info(
+            "Embedding modeli degistirildi: %s",
+            model_name,
+        )
+
     # === Yardimci metodlar ===
 
     def _build_filter(

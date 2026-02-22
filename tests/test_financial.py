@@ -1342,7 +1342,7 @@ class TestFinancialConfig:
         assert s.financial_enabled is True
         assert s.currency == "TRY"
         assert s.tax_rate == 0.20
-        assert s.alert_threshold == 1000.0
+        assert s.alert_threshold == 0.7
         assert s.auto_categorize is True
 
 

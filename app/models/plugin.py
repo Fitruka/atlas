@@ -63,6 +63,13 @@ class HookEvent(str, Enum):
     APPROVAL_REQUESTED = "approval_requested"
     APPROVAL_RESPONDED = "approval_responded"
 
+    # LLM olaylari
+    LLM_INPUT = "llm_input"
+    LLM_OUTPUT = "llm_output"
+    BEFORE_AGENT_START = "before_agent_start"
+    BEFORE_TOOL_CALL = "before_tool_call"
+    BEFORE_MESSAGE_WRITE = "before_message_write"
+
 
 # === Provision Modelleri ===
 

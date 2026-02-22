@@ -149,6 +149,98 @@ class HookManager:
         """Toplam kayitli handler sayisi."""
         return sum(len(h) for h in self._handlers.values())
 
+    async def emit_transform(
+        self,
+        event: HookEvent,
+        payload: dict[str, Any],
+    ) -> dict[str, Any]:
+        """Olayi donusturucu olarak yayar.
+
+        Handler'lar payload'u degistirip dondurebilir.
+        Sirasıyla uygulanir (pipeline).
+
+        Args:
+            event: Tetiklenen olay.
+            payload: Donusturulecek veri.
+
+        Returns:
+            Donusturulmus payload.
+        """
+        handlers = self._handlers.get(event, [])
+        if not handlers:
+            return payload
+
+        current = dict(payload)
+        for _priority, plugin_name, handler in handlers:
+            try:
+                result = await handler(**current)
+                if isinstance(result, dict):
+                    current = result
+            except Exception as exc:
+                logger.error(
+                    "Transform hook hatasi [%s -> %s]: %s",
+                    event.value,
+                    plugin_name,
+                    exc,
+                )
+
+        return current
+
+    async def emit_llm_input(
+        self,
+        messages: list[dict[str, Any]],
+        model: str = "",
+        provider: str = "",
+    ) -> list[dict[str, Any]]:
+        """LLM girdi hook'unu yayar.
+
+        Args:
+            messages: LLM mesajlari.
+            model: Model adi.
+            provider: Saglayici adi.
+
+        Returns:
+            Donusturulmus mesajlar.
+        """
+        result = await self.emit_transform(
+            HookEvent.LLM_INPUT,
+            {
+                "messages": messages,
+                "model": model,
+                "provider": provider,
+            },
+        )
+        return result.get("messages", messages)
+
+    async def emit_llm_output(
+        self,
+        content: str,
+        model: str = "",
+        provider: str = "",
+        usage: dict[str, int] | None = None,
+    ) -> str:
+        """LLM cikti hook'unu yayar.
+
+        Args:
+            content: LLM yaniti.
+            model: Model adi.
+            provider: Saglayici adi.
+            usage: Token kullanimi.
+
+        Returns:
+            Donusturulmus yant.
+        """
+        result = await self.emit_transform(
+            HookEvent.LLM_OUTPUT,
+            {
+                "content": content,
+                "model": model,
+                "provider": provider,
+                "usage": usage or {},
+            },
+        )
+        return result.get("content", content)
+
     def clear(self) -> None:
         """Tum handler'lari temizler."""
         self._handlers.clear()
